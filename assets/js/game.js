@@ -37,7 +37,7 @@
     ink: [15, 15, 14],
     muted: [201, 200, 193],
     grid: 'rgba(15, 15, 14, 0.06)',
-    accent: '#2b44ff',
+    accent: '#0f0f0e',
     paper: '#f1f0eb',
   };
   const rgb = (a, b, k) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(',')})`;
