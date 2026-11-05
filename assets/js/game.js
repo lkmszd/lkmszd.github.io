@@ -32,16 +32,25 @@
   const R = 26; // forgiving hitbox (the drawn bug is a bit bigger)
   const LABELS = ['SMOKE', 'REGRESS', 'UI', 'API', 'E2E', 'A11Y', 'PERF', 'iOS', 'ANDROID', 'WEB', 'NDA', 'BETA'];
 
-  const C = {
-    bg: '#f1f0eb',
-    ink: [15, 15, 14],
-    muted: [201, 200, 193],
-    grid: 'rgba(15, 15, 14, 0.06)',
-    accent: '#0f0f0e',
-    paper: '#f1f0eb',
+  // light / inverted palettes follow the B/W toggle in the header
+  const PALETTES = {
+    light: {
+      bg: '#f1f0eb', ink: [15, 15, 14], muted: [201, 200, 193], grid: 'rgba(15, 15, 14, 0.06)',
+      accent: '#0f0f0e', paper: '#f1f0eb', shell: 'rgba(241, 240, 235, 0.55)', spot: 'rgba(241, 240, 235, 0.92)', eye: '#ffffff',
+    },
+    dark: {
+      bg: '#0f0f0e', ink: [241, 240, 235], muted: [72, 72, 68], grid: 'rgba(241, 240, 235, 0.07)',
+      accent: '#f1f0eb', paper: '#0f0f0e', shell: 'rgba(15, 15, 14, 0.55)', spot: 'rgba(15, 15, 14, 0.92)', eye: '#0f0f0e',
+    },
   };
   const rgb = (a, b, k) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(',')})`;
-  const INK = rgb(C.ink, C.ink, 0);
+  let C = PALETTES.light;
+  let INK = rgb(C.ink, C.ink, 0);
+  const setPalette = () => {
+    C = document.documentElement.dataset.theme === 'dark' ? PALETTES.dark : PALETTES.light;
+    INK = rgb(C.ink, C.ink, 0);
+  };
+  setPalette();
 
   let W = 1600;
   let scale = 1;
@@ -277,16 +286,16 @@
     ctx.fillStyle = C.accent;
     ctx.beginPath(); ctx.ellipse(0, 0, 28, 21, 0, 0, Math.PI * 2); ctx.fill();
 
-    ctx.strokeStyle = 'rgba(241, 240, 235, 0.55)';
+    ctx.strokeStyle = C.shell;
     ctx.lineWidth = 2.5;
     ctx.beginPath(); ctx.moveTo(-25, 0); ctx.lineTo(20, 0); ctx.stroke();
 
-    ctx.fillStyle = 'rgba(241, 240, 235, 0.92)';
+    ctx.fillStyle = C.spot;
     [[-11, -9], [6, -10], [-11, 9], [6, 10]].forEach(([sx, sy]) => {
       ctx.beginPath(); ctx.arc(sx, sy, 3.6, 0, Math.PI * 2); ctx.fill();
     });
 
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = C.eye;
     ctx.beginPath(); ctx.arc(31, -4.5, 2.6, 0, Math.PI * 2); ctx.fill();
     ctx.beginPath(); ctx.arc(31, 4.5, 2.6, 0, Math.PI * 2); ctx.fill();
     ctx.restore();
@@ -413,6 +422,8 @@
     if (document.hidden) pause();
     else kick();
   });
+
+  window.addEventListener('themechange', () => { setPalette(); draw(); });
 
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
   window.addEventListener('resize', resize);

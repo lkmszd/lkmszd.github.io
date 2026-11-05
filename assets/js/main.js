@@ -48,17 +48,6 @@
     });
   }
 
-  // Moscow time in the header
-  const clock = document.getElementById('clock');
-  if (clock) {
-    try {
-      const fmt = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Moscow' });
-      const tick = () => { clock.textContent = fmt.format(new Date()); };
-      tick();
-      setInterval(tick, 15000);
-    } catch (e) { /* keep fallback text */ }
-  }
-
   // Header border + scroll progress
   const header = document.querySelector('.header');
   const bar = document.querySelector('.progress');
@@ -110,8 +99,4 @@
       }, 1800);
     });
   });
-
-  // Current year
-  const year = document.getElementById('year');
-  if (year) year.textContent = String(new Date().getFullYear());
 })();

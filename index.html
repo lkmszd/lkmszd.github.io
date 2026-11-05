@@ -27,11 +27,12 @@
 
   <link rel="preload" href="assets/fonts/InterTight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
 
-  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__ready)document.documentElement.classList.remove('js')},2500)</script>
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/game.js" defer></script>
+  <script>(function(d){d.classList.add('js');try{if(localStorage.getItem('theme')==='dark')d.setAttribute('data-theme','dark')}catch(e){}setTimeout(function(){if(!window.__ready)d.classList.remove('js')},2500)})(document.documentElement)</script>
+  <script src="assets/js/main.js?v=4" defer></script>
+  <script src="assets/js/game.js?v=4" defer></script>
+  <script src="assets/js/interactive.js?v=4" defer></script>
 
   <script type="application/ld+json">
   {
@@ -57,10 +58,10 @@
         <a href="#experience">Опыт</a>
         <a href="#skills">Навыки</a>
         <a href="#education">Образование</a>
-        <a href="#game">Игра</a>
+        <a href="#game">Игры</a>
       </nav>
       <div class="header__right">
-        <span class="header__clock">Москва <time id="clock">MSK</time></span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Инвертировать цвета" aria-pressed="false"><span aria-hidden="true"></span></button>
         <a class="btn btn--small" href="#contact">Связаться</a>
       </div>
     </div>
@@ -71,7 +72,7 @@
     <section class="hero" id="top">
       <div class="container">
         <div class="hero__meta">
-          <span>Резюме — 2026</span>
+          <span>Резюме</span>
           <span>QA · iOS · Android · Web</span>
         </div>
 
@@ -86,7 +87,7 @@
           <p class="hero__lead" data-reveal style="--d:7">Стажёр&nbsp;— ручное тестирование мобильных и&nbsp;веб-приложений</p>
           <p class="hero__note" data-reveal style="--d:8">5&nbsp;лет в&nbsp;VK Testers · гильдия Special Forces · Best Winrate Reporter&nbsp;2025</p>
           <div class="hero__cta" data-reveal style="--d:9">
-            <a class="btn btn--primary" href="https://t.me/lkmszd" target="_blank" rel="noopener">Написать в&nbsp;Telegram <span aria-hidden="true">↗</span></a>
+            <a class="btn btn--primary" href="https://t.me/lkmszd" target="_blank" rel="noopener" data-bug="3">Написать в&nbsp;Telegram <span aria-hidden="true">↗</span></a>
             <a class="btn" href="mailto:lkmszd@vk.com">lkmszd@vk.com</a>
           </div>
         </div>
@@ -116,13 +117,13 @@
         <div class="split">
           <div aria-hidden="true"></div>
           <p class="about__text" data-reveal>
-            <strong>5&nbsp;лет в&nbsp;VK Testers:</strong> 1361&nbsp;отчёт по&nbsp;продуктам VK на&nbsp;iOS, Android и&nbsp;вебе. Вхожу в&nbsp;гильдию <strong>Special Forces</strong>&nbsp;— около 60&nbsp;лучших тестировщиков из&nbsp;~40&nbsp;000. Есть опыт в&nbsp;продуктовом дизайне: смотрю на&nbsp;продукт и&nbsp;через макеты, и&nbsp;глазами пользователя. <strong>Хочу расти в&nbsp;мобильном тестировании и&nbsp;автоматизации.</strong>
+            <strong>5&nbsp;лет в&nbsp;VK Testers:</strong> 1361&nbsp;отчёт по&nbsp;продуктам VK на&nbsp;iOS, Android и&nbsp;вебе. Вхожу в&nbsp;гильдию <strong>Special Forces</strong>&nbsp;— около 60&nbsp;лучших <span data-bug="2">тестировщиков</span> из&nbsp;~40&nbsp;000. Есть опыт в&nbsp;продуктовом дизайне: смотрю на&nbsp;продукт и&nbsp;через макеты, и&nbsp;глазами пользователя. <strong>Хочу расти в&nbsp;мобильном тестировании и&nbsp;автоматизации.</strong>
           </p>
         </div>
 
         <ul class="stats">
           <li class="stat" data-reveal style="--d:0">
-            <span class="stat__value"><span data-count="1361">1361</span></span>
+            <span class="stat__value" data-bug="1"><span data-count="1361">1361</span></span>
             <span class="stat__label">отчёт в&nbsp;баг-трекере VK&nbsp;Testers</span>
           </li>
           <li class="stat" data-reveal style="--d:1">
@@ -166,7 +167,7 @@
               <li>Вошёл в&nbsp;гильдию Special Forces за&nbsp;высокий процент принятых отчётов, был в&nbsp;топ-10 общего рейтинга</li>
               <li>Подтвердил статус победой в&nbsp;номинации Best Winrate Reporter на&nbsp;VK Testers Awards&nbsp;2025: ~98% принятых из&nbsp;~800&nbsp;отчётов (конец 2024&nbsp;— сентябрь 2025)</li>
             </ul>
-            <div class="award">
+            <div class="award" data-bug="5">
               <span class="award__num">~98%</span>
               <span class="award__title">Best Winrate Reporter</span>
               <span class="award__sub">VK Testers Awards 2025 · ~800&nbsp;отчётов</span>
@@ -193,7 +194,7 @@
     <section class="section" id="skills">
       <div class="container">
         <header class="section__head" data-reveal>
-          <span class="section__num">(03)</span>
+          <span class="section__num" data-bug="4">(03)</span>
           <h2 class="section__title">Навыки</h2>
         </header>
 
@@ -267,7 +268,7 @@
       <div class="container">
         <header class="section__head" data-reveal>
           <span class="section__num">(05)</span>
-          <h2 class="section__title">Мини-игра</h2>
+          <h2 class="section__title">Поиграем</h2>
         </header>
 
         <div class="game" data-reveal>
@@ -306,6 +307,14 @@
             <span>Ускоряется каждые 10&nbsp;проверок. Рекорд сохраняется в&nbsp;браузере.</span>
             <span>Пробел / клик / тап&nbsp;— взлёт · Esc&nbsp;— пауза</span>
           </div>
+        </div>
+
+        <div class="qa-invite" data-reveal>
+          <div>
+            <p class="qa-invite__title">Найдите 5&nbsp;багов на&nbsp;этой странице</p>
+            <p class="qa-invite__text">Включите режим QA, и&nbsp;на&nbsp;сайте появятся пять багов. Кликните по&nbsp;каждому, и&nbsp;на&nbsp;него заведётся баг-репорт.</p>
+          </div>
+          <button class="btn btn--primary" type="button" data-qa-start>Включить режим QA</button>
         </div>
       </div>
     </section>
@@ -346,7 +355,7 @@
           </li>
           <li class="contacts__row" data-reveal>
             <span class="contacts__label">VK Testers</span>
-            <a class="contacts__value" href="https://vk.ru/bugs?act=reporter&amp;id=532411204" target="_blank" rel="noopener">Профиль репортёра</a>
+            <a class="contacts__value" href="https://vk.ru/bugs?act=reporter&amp;id=532411204" target="_blank" rel="noopener">Профиль тестировщика</a>
             <span class="contacts__action" aria-hidden="true">↗</span>
           </li>
           <li class="contacts__row" data-reveal>
@@ -361,9 +370,7 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span>© <span id="year">2026</span> Егор Лукичев</span>
-      <span class="footer__bug">Нашли баг на&nbsp;этой странице? <a href="https://t.me/lkmszd" target="_blank" rel="noopener">Напишите</a>&nbsp;— оформлю репорт.</span>
-      <a href="#top">Наверх ↑</a>
+      <a class="footer__top" href="#top">Наверх <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
 </body>
